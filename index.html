@@ -1,30 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hant">
 <head>
 <meta charset="utf-8" />
-<title>Box 授權成功</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Box OAuth 授權成功</title>
+
 <style>
-body { font-family: sans-serif; padding: 40px; text-align: center; background:#fafafa;}
-.container { max-width: 500px; margin: auto; }
-.code-box { 
-  margin-top: 20px; padding: 12px; 
-  background: #ffffff; border-radius: 8px; 
-  border: 1px solid #ddd;
-  font-size: 18px; word-break: break-all;
-}
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background: #f4f4f7;
+        margin: 0;
+        padding: 40px 16px;
+    }
+
+    .logo {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 24px;
+    }
+    .logo svg {
+        width: 90px;
+        height: auto;
+        fill: #0061d5;
+    }
+
+    .card {
+        max-width: 420px;
+        margin: auto;
+        background: white;
+        padding: 32px;
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+        font-size: 22px;
+        margin-bottom: 8px;
+        font-weight: 600;
+        text-align: center;
+        color: #1f1f1f;
+    }
+
+    p {
+        font-size: 14px;
+        text-align: center;
+        color: #444;
+        line-height: 1.5;
+    }
+
+    .code-box {
+        margin: 20px auto 0;
+        padding: 12px;
+        background: #f0f4ff;
+        border-left: 4px solid #0061d5;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: 600;
+        word-break: break-all;
+        color: #003a8c;
+    }
+
+    .footer {
+        text-align: center;
+        margin-top: 24px;
+        font-size: 12px;
+        color: #aaa;
+    }
 </style>
 </head>
+
 <body>
-<div class="container">
-  <h1>Box 授權成功</h1>
-  <p>已成功取得授權碼（authorization code）</p>
-  <p style="color:#666;font-size:14px;margin-top:-5px;">請將以下授權碼貼回應用程式：</p>
-  <div id="code" class="code-box">讀取中...</div>
+
+<div class="logo">
+    <!-- Box official logo (SVG) -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 69 22">
+        <path d="M13.2 0C6 0 0 4.6 0 11s6 11 13.2 11 13.2-4.6 13.2-11S20.3 0 13.2 0zm0 17.8c-3.8 0-6.6-2.8-6.6-6.8s2.9-6.8 6.6-6.8c3.8 0 6.6 2.8 6.6 6.8s-2.9 6.8-6.6 6.8zM44.6 0c-3.7 0-6.4 1.8-7.9 4.1v-3.6H30v21.1h6.7v-12c0-3.1 2.1-4.8 4.7-4.8 2.7 0 4.4 1.7 4.4 4.8v12H52V10.5C52 4.6 48.3 0 44.6 0zM61.4 14.2c0 2.1 1.2 3.4 3.4 3.4 1.6 0 2.5-.3 3.3-.7v4.9c-1 .4-2.7.8-4.9.8-6.1 0-9.6-3.7-9.6-9.8V0h6.7v14.2z"/>
+    </svg>
+</div>
+
+<div class="card">
+    <h1>授權完成</h1>
+    <p>您的 Box OAuth 授權已成功。<br>以下是授權碼（authorization code）：</p>
+
+    <div id="code" class="code-box">讀取中...</div>
+</div>
+
+<div class="footer">
+    Box OAuth Redirect Page
 </div>
 
 <script>
-  const params = new URLSearchParams(window.location.search);
-  document.getElementById("code").innerText = params.get("code") || "找不到授權碼";
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById("code").innerText = params.get("code") || "（找不到授權碼）";
 </script>
+
 </body>
 </html>
